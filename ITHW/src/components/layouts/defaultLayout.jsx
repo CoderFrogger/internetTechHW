@@ -3,7 +3,7 @@ import {Link, Navigate, Outlet} from "react-router-dom";
 import {useStateContext} from "../../contexts/contextProvider.jsx";
 
 export default function DefaultLayout() {
-    const {user, token} = useStateContext()
+    const {token} = useStateContext()
     const {setToken} = useStateContext()
 
     if (!token){
@@ -20,7 +20,7 @@ export default function DefaultLayout() {
         <div id = "defaultLayout">
             <aside>
                 <Link to="/dashboard">Conditions</Link>
-                <Link to="/delete">Delete Account</Link>
+                <Link to="/users">Users</Link>
             </aside>
             <div className="content">
                 <header>

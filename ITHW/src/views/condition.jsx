@@ -23,9 +23,9 @@ export default function Condition() {
         <div className="card animated fadeInDown">
             <h1>{condition.name}</h1>
             {condition.desc.map((c, key) =>
-                <tr key = {key}>
-                    <td>{c}</td>
-                </tr>
+                <div key = {key}>
+                    <div>{c}</div>
+                </div>
             )}
         </div>
     )

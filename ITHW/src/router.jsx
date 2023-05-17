@@ -7,7 +7,6 @@ import GuestLayout from "./components/layouts/guestLayout.jsx";
 import Dashboard from "./views/dashboard.jsx";
 import Users from "./views/users.jsx";
 import Condition from "./views/condition.jsx";
-import DeleteAccount from "./views/deleteAccount.jsx";
 
 const router = createBrowserRouter([
     {
@@ -27,8 +26,8 @@ const router = createBrowserRouter([
                 element: <Condition/>
             },
             {
-                path: "/delete",
-                element: <DeleteAccount/>
+                path: "/users",
+                element: <Users/>
             },
         ]
     },
