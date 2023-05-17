@@ -3,7 +3,7 @@ import {Link, Navigate, Outlet} from "react-router-dom";
 import {useStateContext} from "../../contexts/contextProvider.jsx";
 
 export default function DefaultLayout() {
-    const {token} = useStateContext()
+    const {user, token} = useStateContext()
     const {setToken} = useStateContext()
 
     if (!token){
@@ -19,13 +19,12 @@ export default function DefaultLayout() {
     return (
         <div id = "defaultLayout">
             <aside>
-                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/dashboard">Conditions</Link>
+                <Link to="/delete">Delete Account</Link>
             </aside>
             <div className="content">
                 <header>
-                    <div>
-                        Header
-                    </div>
+                    <div></div>
                     <div>
                         <a href="#" onClick={onLogout} className="btn-logout">Logout</a>
                     </div>
