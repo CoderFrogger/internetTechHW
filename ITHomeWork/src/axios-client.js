@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const axiosClinet = axios.create({
+const axiosClient = axios.create({
     baseURL: `${import.meta.env.VITE_API_URL}/api`
 })
 
-axiosClinet.interceptors.request.use( (config) => {
+axiosClient.interceptors.request.use( (config) => {
     const token = localStorage.getItem('ACCESS_TOKEN')
     if (token) {
         config.headers.Authorization = `Bearer ${token}`
@@ -12,7 +12,7 @@ axiosClinet.interceptors.request.use( (config) => {
     return config;
 })
 
-axiosClinet.interceptors.response.use( (response) => {
+axiosClient.interceptors.response.use( (response) => {
     return response;
 }, (error) => {
     const {response} = error;
@@ -23,4 +23,4 @@ axiosClinet.interceptors.response.use( (response) => {
     }
 })
 
-export default axiosClinet;
+export default axiosClient;

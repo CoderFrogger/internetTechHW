@@ -1,11 +1,9 @@
 import {Link} from "react-router-dom";
 import {useRef} from "react";
-import axiosClient from "axios";
 import {useStateContext} from "../contexts/contextProvider.jsx";
+import axiosClient from "../axios-client.js";
 
 export default function Signup() {
-    const fNameRef = useRef()
-    const lNameRef = useRef()
     const emailRef = useRef()
     const usernameRef = useRef()
     const passwordRef = useRef()
@@ -15,13 +13,11 @@ export default function Signup() {
     const onSubmit = (event) => {
         event.preventDefault()
         const payload = {
-            fName: fNameRef.current.value,
-            lName: lNameRef.current.value,
             email: emailRef.current.value,
             username: usernameRef.current.value,
             password: passwordRef.current.value,
         }
-        axiosClient.post('/signup', payload)
+        axiosClient.post('http://localhost:8000/signup', payload)
             .then(({data}) => {
                 setUser(data.user)
                 setToken(data.token)
@@ -39,12 +35,10 @@ export default function Signup() {
             <div className="form">
                 <form onSubmit={onSubmit}>
                     <h1 className="title">Create an account</h1>
-                    <input ref={fNameRef} type="fName" placeholder="First Name"/>
-                    <input ref={lNameRef} type="lName" placeholder="Last Name"/>
                     <input ref={emailRef} type="email" placeholder="Email"/>
                     <input ref={usernameRef} type="username" placeholder="Username"/>
                     <input ref={passwordRef} type="password" placeholder="Password"/>
-                    <button className="btn btn-block">Login</button>
+                    <button className="btn btn-block">Signup</button>
                     <p className="message">
                         Already have an account? <Link to="/login">login here</Link>
                     </p>
