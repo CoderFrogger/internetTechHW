@@ -6,6 +6,7 @@ import DefaultLayout from "./components/layouts/defaultLayout.jsx";
 import GuestLayout from "./components/layouts/guestLayout.jsx";
 import Dashboard from "./views/dashboard.jsx";
 import Users from "./views/users.jsx";
+import Condition from "./views/condition.jsx";
 
 const router = createBrowserRouter([
     {
@@ -14,15 +15,15 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Navigate to="/users"/>
-            },
-            {
-                path: "/users",
-                element: <Users/>
+                element: <Navigate to="/dashboard"/>
             },
             {
                 path: "/dashboard",
                 element: <Dashboard/>
+            },
+            {
+                path: "/conditions/:index",
+                element: <Condition/>
             },
         ]
     },

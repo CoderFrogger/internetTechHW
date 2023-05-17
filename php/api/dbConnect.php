@@ -4,14 +4,17 @@
         private $dbName = 'react';
         private $user = 'root';
         private $pass = '';
+        private $conn;
 
         public function connect(){
+            $this->conn = null;
             try{
-                $conn = new PDO("mysql:host=$this->server;dbname=$this->dbName", $this->user, $this->pass);
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                return $conn;
+                $this->conn = new PDO("mysql:host=$this->server;dbname=$this->dbName", $this->user, $this->pass);
+                $this->conn ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }catch(\Exception $e){
                 echo "Connection failed: " . $e->getMessage();
             }
+
+            return $this->conn;
         }
     }

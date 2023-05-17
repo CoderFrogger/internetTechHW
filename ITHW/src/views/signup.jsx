@@ -4,13 +4,11 @@ import {useStateContext} from "../contexts/contextProvider.jsx";
 import axios from "axios";
 
 export default function Signup() {
-    const navigate = useNavigate();
-
     const usernameRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
 
-    const {setUser, setToken} = useStateContext()
+    const {setToken} = useStateContext()
 
     const onSubmit = (event) => {
         event.preventDefault()
@@ -19,16 +17,11 @@ export default function Signup() {
             email: emailRef.current.value,
             password: passwordRef.current.value,
         }
-        axios.post('http://localhost/api/signup', payload)
-            .then(({data}) => {
-                navigate('/');
-                setUser(data.user)
-                setToken(data.token)
-            })
-            .catch(err => {
-                const response = err.response;
-                if (response.status === 422) {
-                    console.log(response.data.errors);
+        axios.post('http://localhost/api/signup.php', payload)
+            .then(function (response) {
+                if (response.status === 200) {
+                    setToken(response.token)
+                    location.reload();
                 }
             })
     }
